@@ -9,43 +9,43 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li>
-            <%= link_to user_path(current_user), class:'nav-link text-light' do %>
+            <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> home
             <% end %>
           </li>
           <li>
-            <%=  link_to users_path, class:'nav-link text-light' do %>
+            <%=  link_to users_path, class: 'nav-link text-light' do %>
               <i class="fas fa-users"></i> users
             <% end %>
           </li>
           <li>
-            <%=  link_to books_path, class:'nav-link text-light' do %>
+            <%=  link_to books_path, class: 'nav-link text-light' do %>
               <i class="fas fa-book-open"></i> books
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path, method: :delete, class:'nav-link text-light' do %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> logout
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to root_path, class:'nav-link text-light' do %>
+            <%= link_to root_path, class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> home
             <% end %>
           </li>
           <li>
-            <%= link_to home_about_path, class:'nav-link text-light' do %>
+            <%= link_to home_about_path, class: 'nav-link text-light' do %>
               <i class="fas fa-link"></i> about
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_registration_path, class:'nav-link text-light' do %>
+            <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
               <i class="fas fa-user-plus"></i> sign up
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_session_path, class:'nav-link text-light' do %>
+            <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
               <i class="fas fa-sign-in-alt"></i> login
             <% end %>
           </li>
