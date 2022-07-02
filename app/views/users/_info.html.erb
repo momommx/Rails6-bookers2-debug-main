@@ -20,6 +20,15 @@
 	  <% end %>
   </tr>
 </table>
+<div>
+	<% unless user == current_user %>
+	 <% if current_user.following?(user) %>
+	 　<%= link_to 'フォロー外す', user_relationship_path(user.id), method: :delete, class: "btn-sm btn-primary" %>
+	 <% else %>
+	 　<%= link_to 'フォローする', user_relationships_path(user.id), method: :POST, class: "btn-sm btn-success" %>
+	 <% end %>
+	<% end %>
+</div>  
 
 <div class='row'>
   <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
