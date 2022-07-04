@@ -2,6 +2,9 @@ class SearchesController < ApplicationController
   before_action :authenticate_user!
 
   def search
+    @users = User.all
+    @books = Book.all
+    @word = params[:word]
     @range = params[:range]
 
     if @range == "User"
