@@ -4,16 +4,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    @following_users = @user.following_user
-    @follower_users = @user.follower_user
   end
 
   def index
     @user = current_user
     @users = User.all
     @book = Book.new
-    @following_users = @user.following_user
-    @follower_users = @user.follower_user    
   end
 
   def edit
@@ -36,12 +32,12 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
-    @users = @user.following_user.all
+    @users = @user.following_users.all
   end
   
   def follower
     @user = User.find(params[:id])
-    @users = @user.follower_user.all
+    @users = @user.follower_users.all
   end
 
   def self.looks(search, word)

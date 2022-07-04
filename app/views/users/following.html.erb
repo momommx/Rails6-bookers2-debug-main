@@ -15,10 +15,10 @@
           <td><%= image_tag user.get_profile_image(50,50) %></td>
           <td><%= user.name %></td>
           <td>
-            フォロー数: <%= user.following_user.count %>
+            フォロー数: <%= user.following_users.count %>
           </td>
           <td>
-            フォロワー数: <%= user.follower_user.count %>
+            フォロワー数: <%= user.follower_users.count %>
           </td>
           <td><%= link_to 'Show', user %></td>
         </tr>
