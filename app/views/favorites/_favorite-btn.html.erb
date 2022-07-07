@@ -1,3 +1,4 @@
+<%# 更新したい箇所を部分テンプレート化する%>
 <% if book.favorited_by?(current_user) %>
   <%= link_to book_favorites_path(book), method: :delete, remote: true do %>
     ♥<%= book.favorites.count %>

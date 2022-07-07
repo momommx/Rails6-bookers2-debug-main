@@ -1,12 +1,8 @@
 class BookCommentsController < ApplicationController
   
-  def _comment_count
-   @book = Book.find(params[:id])
-   @user = @book.user
-  end
-  
   def create
     @book = Book.find(params[:book_id])
+    @user = @book.user
     comment = current_user.book_comments.new(book_comment_params)
     comment.book_id = @book.id
     comment.save
