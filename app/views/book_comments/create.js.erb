@@ -1,5 +1,8 @@
+<%#コメント一覧 // 対象の子要素のhtmlを、２つ目のカッコ内のものに変更する。 %>
 $("#comments_table").html("<%= j(render 'book_comments/book_comments', book: @book) %>");
+
+<%#コメント数 %>
 $("#comment_count").html("<%= j(render 'book_comments/comment_count', book: @book) %>");
 
-<%#コメント入力フォームのvalueをリセットする %>
+<%#コメント入力フォームのvalueを空にする %>
 $("textarea").val(" ");
