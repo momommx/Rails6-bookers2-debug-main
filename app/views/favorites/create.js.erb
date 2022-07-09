@@ -1,3 +1,3 @@
-<%# books/indexページのいいねボタンは複数あるため、どの本へいいねなのか@book.idで指定する %>
+<%# books/indexページのいいねボタンは複数あるため、どの本にたいするいいねなのか@book.idで特定する %>
 <%# books/showページのいいねボタンは一つだけなので、本来id/classの指定は不要だが、下のコードを一行で済ませるためにshowページの表記もid付きにした %>
 $("#favorite-btn<%= @book.id %>").html("<%= j(render 'favorites/favorite-btn', book: @book) %>");
