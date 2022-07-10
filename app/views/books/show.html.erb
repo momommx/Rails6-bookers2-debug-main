@@ -25,6 +25,22 @@
           <td id="comment_count">
             <%= render 'book_comments/comment_count', book: @book %>
           </td>
+  
+          <td class="star-group">
+            <div id="star<%= @book.id%>"></div>  
+            
+              <script>
+                $('#star').empty();
+                $('#star<%= @book.id%>').raty({
+                  size      : 36,
+                  starOff   : '<%= asset_path('star-off.png') %>',
+                  starOn    : '<%= asset_path('star-on.png') %>',
+                  half      : false,
+                  readOnly: true,
+                  score: <%= @book.rate %>,
+                });
+              </script>
+          </td>
           <td>
             <% if @user == current_user %>
               <%= link_to 'Edit', edit_book_path(@book.id), class:'btn btn-sm btn-success' %>
