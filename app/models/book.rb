@@ -2,10 +2,13 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
   
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
+  
+  # 新着順, 星評価の高い順/ カラムデータの取り出し方を指示する記述
+   scope :latest, -> {order(created_at: :desc)}
+   scope :star_count, -> {order(rate: :desc)}
   
   # ★の評価機能
   validates :rate, numericality: {
