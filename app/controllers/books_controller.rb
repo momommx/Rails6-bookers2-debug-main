@@ -5,6 +5,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
     @book_comment = BookComment.new
+    @tag_relations = @book.tags
   end
 
   def index
@@ -20,14 +21,16 @@ class BooksController < ApplicationController
     
     @user = current_user
     @book = Book.new
-    @tag = Tag.all
+    @tag_list = Tag.all
   end
 
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
+    tag_list = params[:post][:name].split(',') # 受け取った値をカンマで区切って配列にする
+    
     if @book.save
-      @book.save_tags(params[:book][:tag])   # タグの保存
+      @book.save_tags(tag_list)   # タグの保存
       redirect_to book_path(@book.id), notice: "You have created book successfully."
     else
       @user = current_user
@@ -38,6 +41,7 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @tag_list = @book.tags.pluck(:tagname).join(',')
     if @book.user == current_user
      render :edit
     else
@@ -47,6 +51,7 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
+    tag_list = params[:book][:name].split(',')
     if @book.update(book_params)
       @book.save_tags(params[:book][:tag]) # タグの更新
       redirect_to book_path(@book), notice: "You have updated book successfully."

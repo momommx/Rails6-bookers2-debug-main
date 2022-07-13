@@ -20,7 +20,13 @@
         </td>
         <td><%= link_to book.title, book_path(book) %></td>
         <td><%= book.body %></td>
-        <td><%= link_to tag.tagname, search_path(tag) %></td>
+        
+        <!--タグリスト-->
+        <td>
+          <%= link_to search_path(book.tag) do %>
+            <%= tag.tagname %>
+          <% end %>
+        </td>
         
         <td id="favorite-btn<%= book.id %>">
           <%= render 'favorites/favorite-btn', book: book %>
