@@ -8,7 +8,13 @@
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
   
-  <div class="form-group row" id="star">
+  <div class="form-group">
+    <%= f.label :tag %>
+    <%= f.text_field :tag_name, class: 'form-control book_tag_name' %>
+  </div>  
+  
+  <div class="form-group" id="star">
+    <%= f.label :rate %>
     <%= f.hidden_field :rate, id: :review_star %>
   </div>
 
@@ -16,7 +22,7 @@
     <script>
     $('#star').empty();
     $('#star').raty({
-      size     : 36,                                     //星のサイズ
+      size     : 36,         //星のサイズ
       starOff  : '<%= asset_path('star-off.png') %>',    //imagesフォルダより星画像の呼び出し
       starOn   : '<%= asset_path('star-on.png') %>',
       starHalf : '<%= asset_path('star-half.png') %>',

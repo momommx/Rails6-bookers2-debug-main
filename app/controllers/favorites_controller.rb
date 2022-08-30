@@ -14,4 +14,5 @@ class FavoritesController < ApplicationController
     favorite.destroy
     # app/views/favorites/destroy.js.erbを参照する
   end
+  
 end
