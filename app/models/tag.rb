@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  validates :tagname, uniqueness: true
+  
   has_many :tag_relations, dependent: :destroy, foreign_key: 'tag_id'
   has_many :books, through: :tag_relations
 

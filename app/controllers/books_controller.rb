@@ -1,17 +1,17 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def show
     @book_new = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
     @book_comment = BookComment.new
-    @tag_relations = @book.tags
   end
 
   def index
     @user = current_user
     @book = Book.new
-    @tag = Tag.all
     
     if params[:latest]
       @books = Book.latest
@@ -27,9 +27,10 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
+    tag_list = params[:book][:tag_name].split(',')
     
     if @book.save
-      @book.save_tags(params[:book][:tag])   # タグの保存
+      @book.save_tags(tag_list)  # タグの保存
       redirect_to book_path(@book.id), notice: "You have created book successfully."
     else
       @user = current_user
@@ -52,7 +53,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     
     if @book.update(book_params)
-      @book.save_tags(params[:book][:tag]) # タグの更新
       redirect_to book_path(@book), notice: "You have updated book successfully."
     else
       render "edit"
@@ -83,5 +83,12 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :body, :rate)
+  end
+  
+  def ensure_correct_user
+    @book = Book.find(params[:id])
+    unless @book.user == current_user
+      redirect_to books_path
+    end
   end
 end
