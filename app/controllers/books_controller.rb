@@ -12,6 +12,7 @@ class BooksController < ApplicationController
   def index
     @user = current_user
     @book = Book.new
+    @tag = Tag.all
     
     if params[:latest]
       @books = Book.latest

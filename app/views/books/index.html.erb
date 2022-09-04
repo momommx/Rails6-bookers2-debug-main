@@ -20,7 +20,7 @@
       <h2>Books</h2>
       <%= link_to '新しい順', books_path(latest: "true") %> 
       | <%= link_to '評価の高い順', books_path(star_count: "true") %>
-      <%= render 'index', books: @books, tag: @tag %>
+      <%= render 'index', books: @books %>
     </div>
   </div>
 </div>
