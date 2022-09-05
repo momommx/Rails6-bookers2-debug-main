@@ -22,7 +22,7 @@
           
          <td>
             <% @book.tags.each do |tag| %>
-              <li style="list-style: none;"><%= link_to tag.tagname, search_path(content: tag.name, model:"tag", method: "perfect") %></li>
+              <li style="list-style: none;"><%= link_to tag.tagname, search_path(content: tag.tagname, model:"tag", method: "perfect") %></li>
             <% end %>
           </td>
           
