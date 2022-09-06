@@ -20,7 +20,7 @@
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
           
-         <td>
+          <td>
             <% @book.tags.each do |tag| %>
               <li style="list-style: none;"><%= link_to tag.tagname, search_path(content: tag.tagname, model:"tag", method: "perfect") %></li>
             <% end %>
@@ -49,7 +49,7 @@
               </script>
           </td>
           <td>
-            <% if @user == current_user %>
+            <% if user == current_user %>
               <%= link_to 'Edit', edit_book_path(@book.id), class:'btn btn-sm btn-success' %>
               <%= link_to 'Destroy', book_path(@book), class:'btn btn-sm btn-danger', method: :delete, "data-confirm" => "本当に削除しますか？" %>
             <% end %> 
