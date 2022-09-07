@@ -13,8 +13,8 @@
   		  <tr>
           <td>
             <%= link_to(@book.user) do %>
-             <%= image_tag @book.user.get_profile_image(100,100) %><br>
-             <%= @book.user.name %>
+              <%= image_tag @book.user.get_profile_image(100,100) %><br>
+              <%= @book.user.name %>
             <% end %>
           </td>
           <td><%= link_to @book.title, @book %></td>
@@ -35,7 +35,6 @@
   
           <td class="star-group">
             <div id="star<%= @book.id%>"></div>  
-            
               <script>
                 $('#star').empty();
                 $('#star<%= @book.id%>').raty({
