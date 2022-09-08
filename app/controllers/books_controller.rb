@@ -19,9 +19,9 @@ class BooksController < ApplicationController
     elsif params[:old]
       @books = Book.old
     elsif params[:star_count]
-       @books = Book.star_count
-      else
-       @books = Book.all
+      @books = Book.star_count
+    else
+      @books = Book.all
     end
   end
 
