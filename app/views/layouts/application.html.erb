@@ -13,7 +13,9 @@
       <main>
         <p id="notice"><%= notice %></p>
         <div class="container">
-          
+          <div class="mr-3"><%= render 'searches/form' %></div>
+          <div class="mr-3"><%= render "searches/tag_form" %></div>
+        </div>          
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>
