@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'tags/index'
-  get 'tags/show'
-  get 'tags/destroy'
   
   devise_for :users
   root to: 'homes#top'
@@ -12,7 +9,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :update]
   end
-  get "search" => "searches#search"
   
   resources :books, only: [:index, :show, :edit, :create, :destroy, :update] do
    resources :book_comments, only: [:create, :destroy]
